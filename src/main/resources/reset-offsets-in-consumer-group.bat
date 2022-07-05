@@ -1,0 +1,1 @@
+kafka-consumer-groups --bootstrap-server localhost:9092 --group simplest-consumer-group --topic simplest-topic --reset-offsets --to-earliest --execute

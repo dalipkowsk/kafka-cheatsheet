@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+  schemaregistry1:
+    image: confluentinc/cp-schema-registry:7.1.2
+    hostname: cp-schema-registry
+    container_name: cp-schema-registry
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka1:19092,PLAINTEXT://${DOCKER_HOST_IP:-127.0.0.1}:9092
+    ports:
+      - 8081:8081
+    networks:
+      - docker-compose_kafka-stack-default
+
+networks:
+  docker-compose_kafka-stack-default:
+    external: true
