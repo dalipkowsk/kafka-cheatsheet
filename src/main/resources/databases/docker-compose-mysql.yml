@@ -1,0 +1,21 @@
+version: '2.1'
+
+services:
+  mysql1:
+    image: mysql:latest
+    hostname: mysql1
+    ports:
+      - "3306:3306"
+    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # (this is just an example, not intended to be a production configuration)
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - ./../../../../mysql-database/var/lib/mysql:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 9090:8080

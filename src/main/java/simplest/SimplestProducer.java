@@ -17,6 +17,8 @@ public class SimplestProducer {
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        properties.put(ProducerConfig.ACKS_CONFIG, 0); //FIRE AND FORGET
+        //https://stackoverflow.com/questions/67924473/difference-between-kafka-async-and-kafka-sync-acks-0
 
         final ProducerRecord<String, String> message = new ProducerRecord<>("simplest-topic", "Hello simplest topic! Time: " + Instant.now());
 

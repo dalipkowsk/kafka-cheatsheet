@@ -1,4 +1,5 @@
 .idea/
 *iml
 simple-kafka-cluster-data/
+mysql-database/
 target/

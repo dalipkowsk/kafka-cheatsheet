@@ -1,0 +1,1 @@
+docker-compose -f "zk-single-kafka-single-rest-proxy.yml" down
