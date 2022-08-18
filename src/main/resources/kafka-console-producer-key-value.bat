@@ -1,0 +1,1 @@
+kafka-console-producer --broker-list localhost:9092 --topic simplest-topic --property parse.key=true --property key.separator=:

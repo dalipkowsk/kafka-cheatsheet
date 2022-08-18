@@ -1,5 +1,6 @@
-package model;
+package custom;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -17,7 +18,7 @@ public class BankTransactionDeserializer implements Deserializer<BankTransaction
 
     static {
         OBJECT_MAPPER.registerModule(new JavaTimeModule());
-        OBJECT_MAPPER.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        OBJECT_MAPPER.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
     }
 
     @Override

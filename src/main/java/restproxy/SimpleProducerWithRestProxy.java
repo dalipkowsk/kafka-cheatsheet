@@ -25,12 +25,12 @@ public class SimpleProducerWithRestProxy {
         RestProxyProducerRecord record3 = new RestProxyProducerRecord("key", "message3");
         List<RestProxyProducerRecord> messages = List.of(record1, record2, record3);
         RestProxyProducerRequestBody restProxyProducerRequestBody = new RestProxyProducerRequestBody(messages);
-        String requestBody = OBJECT_MAPPER.writeValueAsString(restProxyProducerRequestBody);
 
-        System.out.println(requestBody);
+        final String requestBody = OBJECT_MAPPER.writeValueAsString(restProxyProducerRequestBody);
+        System.out.println("Tested message: " + requestBody);
 
         //Send request
-        HttpClient httpClient = HttpClient.newHttpClient();
+        final HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest httpRequest = HttpRequest
                 .newBuilder(URI.create("http://localhost:8082/topics/simplest-topic"))
                 .header("Content-Type", "application/vnd.kafka.json.v2+json")
@@ -40,7 +40,7 @@ public class SimpleProducerWithRestProxy {
         HttpResponse.BodyHandler<String> httpResponseHandler = HttpResponse.BodyHandlers.ofString();
         try {
             HttpResponse<String> httpResponse = httpClient.send(httpRequest, httpResponseHandler);
-            System.out.println(httpResponse.body());
+            System.out.println("Kafka HTTP proxy response: " + httpResponse.body());
         } catch (IOException | InterruptedException e) {
             System.out.println("Failed to send HTTP request to HTTP Kafka Proxy");
             Thread.currentThread().interrupt();

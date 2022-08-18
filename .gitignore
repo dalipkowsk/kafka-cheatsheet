@@ -1,5 +1,6 @@
 .idea/
 *iml
 simple-kafka-cluster-data/
+simple-kafka-cluster-data-rest-proxy/
 mysql-database/
 target/
