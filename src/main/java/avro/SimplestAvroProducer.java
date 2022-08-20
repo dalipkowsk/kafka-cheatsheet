@@ -61,7 +61,6 @@ public class SimplestAvroProducer {
             String name = "exampleCustomer" + nCustomers;
             String email = "example" + nCustomers + "@example.com";
             customer.put("id", nCustomers);
-            customer.put("surname", "xaxa");
             customer.put("name", name);
             customer.put("email", email);
 
